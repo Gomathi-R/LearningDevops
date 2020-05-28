@@ -11,5 +11,10 @@ pipeline{
                 git credentialsId: 'github', url: 'https://github.com/Gomathi-R/LearningDevops'
             }
         }
+        stage("mvn build"){
+            steps{
+                sh "mvn clean package"
+            }
+        }
     }
 }
