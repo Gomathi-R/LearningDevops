@@ -5,6 +5,7 @@ pipeline{
             steps{
                 echo "welcome to jenkins declarative"
             }
+        }
         stage("git checkout"){
             steps{
                 git credentialsId: 'github', url: 'https://github.com/Gomathi-R/LearningDevops'
