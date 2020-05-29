@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    stages{
+        stage("welcome"){
+            steps{
+                echo "welcome to jenkins declarative"
+            }
+        }
+        stage("git checkout"){
+            steps{
+                git credentialsId: 'github', url: 'https://github.com/Gomathi-R/LearningDevops'
+            }
+        }
+        stage("mvn build"){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage("mail config"){
+            steps{
+              mail bcc: '', body: '''Hi Team,
+
+              Welcome to jenkins email alerts. 
+
+              Thanks,
+              Gomathi''', cc: '', from: '', replyTo: '', subject: 'Jenkins job status', to: 'gomathi.au@gmail.com'
+             }
+        }
+    }
+}
